@@ -5,31 +5,39 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class FilledFrame extends JFrame {
     int size = 400;
     public FilledFrame()
     {
-        JButton butSmall = new JButton("Small");
-        JButton butMedium = new JButton("Medium");
-        JButton butLarge = new JButton("Large");
-        JButton butMessage = new JButton("Say Hi!");
+        JButton Small = new JButton("Small");
+
+        JButton Medium = new JButton("Medium");
+
+        JButton Large = new JButton("Large");
+        //butLarge.addActionListener(new ButtonHandler(this));
+        JButton Message = new JButton("Say Hi!");
         SquarePanel panel = new SquarePanel(this);
-        JPanel butPanel = new JPanel();
-        butPanel.add(butSmall);
-        butPanel.add(butMedium);
-        butPanel.add(butLarge);
-        butPanel.add(butMessage);
-        add(butPanel, BorderLayout.NORTH);
+        JPanel Panel = new JPanel();
+        Panel.add(Small);
+        Panel.add(Medium);
+        Panel.add(Large);
+        Panel.add(Message);
+        add(Panel, BorderLayout.NORTH);
         add(panel, BorderLayout.CENTER);
         setSize( size+100, size+100 );
 
-        butMessage.addActionListener(new ActionListener() {
+        Message.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null,"HIII");
 
             }
         });
+
+        Small.addActionListener(new ButtonHandler(this, 100));
+        Medium.addActionListener(new ButtonHandler(this, 200));
+        Large.addActionListener(new ButtonHandler(this, 400));
     }
 
 
